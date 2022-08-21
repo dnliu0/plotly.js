@@ -9,6 +9,7 @@ var calcMarkerSize = require('../scatter/calc').calcMarkerSize;
 
 var dataArrays = ['a', 'b', 'c'];
 var arraysToFill = {a: ['b', 'c'], b: ['a', 'c'], c: ['a', 'b']};
+//var arraysToFill = {a: ['a', 'b', 'c'], b: ['a', 'b', 'c'], c: ['a', 'b', 'c']};
 
 module.exports = function calc(gd, trace) {
     var ternary = gd._fullLayout[trace.subplot];
@@ -19,18 +20,21 @@ module.exports = function calc(gd, trace) {
     var i, j, dataArray, newArray, fillArray1, fillArray2;
 
     // fill in one missing component
-    for(i = 0; i < dataArrays.length; i++) {
-        dataArray = dataArrays[i];
-        if(arrays[dataArray]) continue;
+    // for(i = 0; i < dataArrays.length; i++) {
+    //     dataArray = dataArrays[i];
+    //     if(arrays[dataArray]) continue;
 
-        fillArray1 = arrays[arraysToFill[dataArray][0]];
-        fillArray2 = arrays[arraysToFill[dataArray][1]];
-        newArray = new Array(fillArray1.length);
-        for(j = 0; j < fillArray1.length; j++) {
-            newArray[j] = normSum - fillArray1[j] - fillArray2[j];
-        }
-        arrays[dataArray] = newArray;
-    }
+    //     fillArray1 = arrays[arraysToFill[dataArray][0]];
+    //     fillArray2 = arrays[arraysToFill[dataArray][1]];
+
+    //     //newArray = new Array(fillArray1.length);
+    //     newArray = arrays[arraysToFill[dataArray][2]]
+    //     // for(j = 0; j < fillArray1.length; j++) {
+    //     //     newArray[j] = normSum - fillArray1[j] - fillArray2[j];
+    //     //   
+    //     // }
+    //     arrays[dataArray] = newArray;
+    // }
 
     // make the calcdata array
     var serieslen = trace._length;
